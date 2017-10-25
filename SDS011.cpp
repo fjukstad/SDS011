@@ -48,6 +48,9 @@ int SDS011::read(float *p25, float *p10) {
 	int checksum_is;
 	int checksum_ok = 0;
 	int error = 1;
+    
+    ss->listen();
+    
 	while ((sds_data->available() > 0) && (sds_data->available() >= (10-len))) {
 		buffer = sds_data->read();
 		value = int(buffer);
@@ -106,5 +109,7 @@ void SDS011::begin(uint8_t pin_rx, uint8_t pin_tx) {
 	softSerial->begin(9600);
 
 	sds_data = softSerial;
+
+    ss = softSerial; 
 }
 

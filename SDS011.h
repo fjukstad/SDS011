@@ -27,4 +27,6 @@ class SDS011 {
 	private:
 		uint8_t _pin_rx, _pin_tx;
 		Stream *sds_data;		
+        SoftwareSerial *ss; 
 };
+
